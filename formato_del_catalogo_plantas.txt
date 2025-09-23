@@ -1,0 +1,16 @@
+deseo que crees un archivo html.Este será mi catalogo de plantas 
+dividido en 3 segmentos, 
+1. plantas interiores
+2. plantas exteriores
+3. materiales y accesorios
+
+cada foto tiene 
+que tener 
+lo siguiente,
+
+1. nombre de la planta
+2. uso ideal(de forma consisa)
+3. llamado a la accion(a comprar cuando le da click le diriga al whatsapp 992555359)
+
+
+ 
