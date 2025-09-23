@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo de Plantas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h2 {
+      margin-top: 40px;
+      color: #2e7d32;
+    }
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+      width: 100%;
+    }
+    .producto {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .producto img {
+      max-width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .producto h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+    .producto p {
+      font-size: 14px;
+      color: #555;
+      flex-grow: 1;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: #25d366;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #128c7e;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌿 Catálogo de Plantas</h1>
+
+  <h2>Plantas Interiores</h2>
+  <div class="catalogo" id="interiores"></div>
+
+  <h2>Plantas Exteriores</h2>
+  <div class="catalogo" id="exteriores"></div>
+
+  <h2>Materiales y Accesorios</h2>
+  <div class="catalogo" id="materiales"></div>
+
+  <script>
+    const interiores = [
+      { nombre: "Monstera", uso: "Decora tu sala con estilo tropical", img: "images/monstera.jpg" },
+      { nombre: "Helecho", uso: "Ideal para ambientes húmedos", img: "images/helecho.jpg" }
+    ];
+
+    const exteriores = [
+      { nombre: "Rosa", uso: "Perfecta para jardines coloridos", img: "images/rosa.jpg" },
+      { nombre: "Lavanda", uso: "Aporta aroma y belleza al exterior", img: "images/lavanda.jpg" }
+    ];
+
+    const materiales = [
+      { nombre: "Maceta de barro", uso: "Clásica y resistente", img: "images/maceta.jpg" },
+      { nombre: "Sustrato universal", uso: "Ideal para cualquier tipo de planta", img: "images/sustrato.jpg" }
+    ];
+
+    function renderProductos(lista, contenedorId) {
+      const contenedor = document.getElementById(contenedorId);
+      lista.forEach(prod => {
+        const div = document.createElement("div");
+        div.className = "producto";
+        div.innerHTML = `
+          <img src="${prod.img}" alt="${prod.nombre}">
+          <h3>${prod.nombre}</h3>
+          <p>${prod.uso}</p>
+          <a class="btn" href="https://wa.me/51992555359?text=Hola!%20Quiero%20comprar%20${encodeURIComponent(prod.nombre)}">Comprar</a>
+        `;
+        contenedor.appendChild(div);
+      });
+    }
+
+    renderProductos(interiores, "interiores");
+    renderProductos(exteriores, "exteriores");
+    renderProductos(materiales, "materiales");
+  </script>
+
+
