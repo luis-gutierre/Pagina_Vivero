@@ -1,0 +1,163 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo de Plantas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    h2 {
+      margin-top: 40px;
+      color: #2e7d32;
+    }
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+      width: 100%;
+    }
+    .producto {
+      background: white;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .producto img {
+      max-width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .producto h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+    .producto p {
+      font-size: 14px;
+      color: #555;
+      flex-grow: 1;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 16px;
+      background: #25d366;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #128c7e;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌿 Catálogo de Plantas</h1>
+
+  <h2>Plantas Interiores</h2>
+  <div class="catalogo" id="interiores"></div>
+
+  <h2>Plantas Exteriores</h2>
+  <div class="catalogo" id="exteriores"></div>
+
+  <h2>Materiales y Accesorios</h2>
+  <div class="catalogo" id="materiales"></div>
+
+  <script>
+    const interiores = [
+      { nombre: "anturio amarillo", uso: "Ideal para interiores elegantes, aporta color y alegría.", img: "anturio amarillo.jpg" },
+      { nombre: "anturio blanco", uso: "Perfecto para espacios minimalistas y modernos, transmite paz.", img: "anturio blanco.jpg" },
+      { nombre: "anturio rojo", uso: "Aporta energía y vitalidad, ideal para salas y oficinas.", img: "anturio rojo.jpg" },
+      { nombre: "bromelia", uso: "Excelente para interiores luminosos, da un toque tropical y exótico.", img: "bromelia.jpg" },
+      { nombre: "chiflera plateada", uso: "Ideal para oficinas y salas amplias, purifica el aire.", img: "chiflera plateada.jpg" },
+      { nombre: "culantrillo", uso: "Perfecto para baños y cocinas, prospera en ambientes húmedos.", img: "culantrillo.jpg" },
+      { nombre: "pata de ganso", uso: "Aporta frescura en interiores y exteriores sombreados.", img: "pata de ganso.jpg" },
+      { nombre: "Planta Punta de Flecha", uso: "Planta de interior colgante o trepadora; purifica el aire.", img: " " },
+      { nombre: "Lotería", uso: "Decoración en interiores con luz indirecta.", img: " " },
+      { nombre: "Planta Punta de Flecha", uso: "Planta de interior colgante o trepadora; purifica el aire.", img: " " },
+      { nombre: "Helecho Culantrillo", uso: "Se utiliza para decorar estanterías o rincones con luz suave y humedad.", img: " " },
+      { nombre: "Helecho de Boston", uso: "Planta de interior y colgante. Excelente purificador de aire y humidificador.", img: " " },
+      { nombre: "Anturio", uso: "Planta de interior con flor.", img: " " },
+      { nombre: "Árbol de la Abundancia", uso: "Suculenta de exterior, bonsái o interior muy luminoso.", img: " " },
+      { nombre: "Lengua de Suegra", uso: "Interiores (hogares, oficinas, baños, dormitorios) por su resistencia y su capacidad para purificar el aire.", img: " " },
+      { nombre: "Árbol de la Abundancia", uso: "Suculenta de exterior, bonsái o interior muy luminoso.", img: " " },
+      { nombre: "Cebra", uso: "Es perfecta para macetas pequeñas y decorativas como la de la foto.", img: " " },
+      { nombre: "Croton", uso: "Se usa como planta ornamental por su follaje llamativo.", img: " " },
+      { nombre: "Cebra", uso: "Es perfecta para macetas pequeñas y decorativas como la de la foto.", img: " " },
+      { nombre: "Cola de Burro", uso: "Es una excelente planta ornamental de interior en espacios con buena luz.", img: " " },
+      { nombre: "Planta de la Moneda", uso: "Ideal para bonsái (por su fácil poda) o como suculenta de maceta.", img: " " }
+      
+      
+      
+      
+      
+    ];
+
+    const exteriores = [
+      { nombre: "cyca", uso: "Ideal para jardines o macetas grandes, aporta un aire elegante y robusto.", img: "cyca.jpg" },
+      { nombre: "duranta", uso: "Excelente para cercos vivos y jardines soleados, de fácil mantenimiento.", img: "duranta.jpg" },
+      { nombre: "echavaria", uso: "Perfecta para espacios pequeños y decoraciones minimalistas.", img: "echavaria.jpg" },
+      { nombre: "sabila verde", uso: "Ideal para interiores luminosos, decorativa y medicinal.", img: "sabila verde.jpg" },
+      { nombre: "tomillo", uso: "Perfecto para huertos caseros y cocinas, aromático y culinario.", img: "tomillo.jpg" },
+      { nombre: "Geranio", uso: "Es perfecto para añadir color a balcones, terrazas y ventanas", img: " " },
+      { nombre: "Suculenta de Hojas Apiladas", uso: "Macetas en jardines de rocas; interior muy luminoso cerca de ventanas.", img: " " },
+      { nombre: "Orquídea de Hoja Gruesa", uso: "Planta de interior con luz brillante indirecta; climas cálidos sin heladas.", img: " " },
+      { nombre: "Geranio Común", uso: "Balcones, Terrazas, Jardines soleados, y como planta de interior muy luminosa. Es ideal para añadir un color vibrante y duradero.", img: " " },
+      { nombre: "Geranio Común Blanco", uso: "El color blanco aporta un toque de elegancia y frescura, combinando bien con cualquier decoración.", img: " " },
+      { nombre: "Flor de Estrella de Mar", uso: "Es apreciada por sus flores grandes y distintivas.", img: " " },
+      { nombre: "Cica", uso: "En interiores, es ideal para entradas o espacios amplios con mucha luz.", img: " " },
+      { nombre: "Kalanchoe de Flor", uso: "Ideal para aportar color duradero en invierno y primavera.", img: " " },
+      { nombre: "Aloe Compacto", uso: "Funciona muy bien en jardines de rocas y como parte de terrarios abiertos.", img: " " },
+      { nombre: "Palmera Areca", uso: "Ideal para esquinas y espacios amplios que necesiten un toque tropical.", img: " " },
+      { nombre: "Cactus Barril", uso: "Jardines desérticos o rocosos, Exteriores soleados y como planta ornamental de interior en ventanas muy luminosas o invernaderos.", img: " " },
+      { nombre: "Helecho de Boston", uso: "Ideal para macetas colgantes o como planta de suelo en jardines sombreados.", img: " " },
+      { nombre: "Yuca", uso: "Ideal para paisajes de estilo desértico o contemporáneo.", img: " " }
+      
+      
+ 
+ 
+      
+      
+    ];
+
+    const materiales = [
+      { nombre: "Maceta de barro", uso: "Clásica y resistente", img: "images/maceta.jpg" },
+      { nombre: "Sustrato universal", uso: "Ideal para cualquier tipo de planta", img: "images/sustrato.jpg" }
+    ];
+
+    function renderProductos(lista, contenedorId) {
+      const contenedor = document.getElementById(contenedorId);
+      lista.forEach(prod => {
+        const div = document.createElement("div");
+        div.className = "producto";
+        div.innerHTML = `
+          <img src="${prod.img}" alt="${prod.nombre}">
+          <h3>${prod.nombre}</h3>
+          <p>${prod.uso}</p>
+          <a class="btn" href="https://wa.me/51992555359?text=Hola!%20Quiero%20comprar%20${encodeURIComponent(prod.nombre)}">Comprar</a>
+        `;
+        contenedor.appendChild(div);
+      });
+    }
+
+    renderProductos(interiores, "interiores");
+    renderProductos(exteriores, "exteriores");
+    renderProductos(materiales, "materiales");
+  </script>
