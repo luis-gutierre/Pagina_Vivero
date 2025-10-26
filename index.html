@@ -10,6 +10,9 @@
       margin: 0;
       padding: 20px;
       background: #f5f5f5;
+      position: relative;
+      min-height: 100vh;
+      padding-bottom: 80px; /* espacio para el pie */
     }
     h1 {
       text-align: center;
@@ -65,9 +68,52 @@
     .btn:hover {
       background: #128c7e;
     }
+
+    /* Icono de WhatsApp fijo */
+    .whatsapp-icon {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background-color: #25d366;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transition: transform 0.2s;
+    }
+    .whatsapp-icon:hover {
+      transform: scale(1.1);
+    }
+    .whatsapp-icon img {
+      width: 32px;
+      height: 32px;
+    }
+
+    /* Pie de página */
+    footer {
+      text-align: center;
+      background: #2e7d32;
+      color: white;
+      padding: 15px;
+      border-top: 4px solid #25d366;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Icono WhatsApp -->
+  <a href="https://wa.me/51992555359" class="whatsapp-icon" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
 
   <h1>🌿 Catálogo de Plantas - Vivero Raices y Flores</h1>
 
@@ -80,6 +126,10 @@
   <h2>Materiales y Accesorios</h2>
   <div class="catalogo" id="materiales"></div>
 
+  <footer>
+    📍 Ubicación: Pachacamac Manchay - Chacra
+  </footer>
+
   <script>
     const interiores = [
       { nombre: "anturio amarillo", uso: "Ideal para interiores elegantes, aporta color y alegría.", img: "anturio amarillo.jpg" },
@@ -91,7 +141,6 @@
       { nombre: "pata de ganso", uso: "Aporta frescura en interiores y exteriores sombreados.", img: "pata de ganso.jpg" },
       { nombre: "Planta Punta de Flecha", uso: "Planta de interior colgante o trepadora; purifica el aire.", img: "Fotos051025/Planta Punta de Flecha.jpg" },
       { nombre: "Lotería", uso: "Decoración en interiores con luz indirecta.", img: "Fotos051025/Lotería.jpg" },
-      { nombre: "Planta Punta de Flecha", uso: "Planta de interior colgante o trepadora; purifica el aire.", img: "Fotos051025/Planta Punta de Flecha.jpg" },
       { nombre: "Helecho Culantrillo", uso: "Se utiliza para decorar estanterías o rincones con luz suave y humedad.", img: "Fotos051025/Helecho Culantrillo.jpg" },
       { nombre: "Helecho de Boston", uso: "Planta de interior y colgante. Excelente purificador de aire y humidificador.", img: "Fotos051025/Helecho de Boston.jpg" },
       { nombre: "Anturio", uso: "Planta de interior con flor.", img: "Fotos051025/Anturio.jpg" },
@@ -99,14 +148,8 @@
       { nombre: "Lengua de Suegra", uso: "Interiores (hogares, oficinas, baños, dormitorios) por su resistencia y su capacidad para purificar el aire.", img: "Fotos051025/Lengua de Suegra.jpg" },
       { nombre: "Cebra", uso: "Es perfecta para macetas pequeñas y decorativas como la de la foto.", img: "Fotos051025/Cebra.jpg" },
       { nombre: "Croton", uso: "Se usa como planta ornamental por su follaje llamativo.", img: "Fotos051025/Croton.jpg" },
-      { nombre: "Cebra", uso: "Es perfecta para macetas pequeñas y decorativas como la de la foto.", img: "Fotos051025/Cebra.jpg" },
       { nombre: "Cola de Burro", uso: "Es una excelente planta ornamental de interior en espacios con buena luz.", img: "Fotos051025/Cola de Burro.jpg" },
       { nombre: "Planta de la Moneda", uso: "Ideal para bonsái (por su fácil poda) o como suculenta de maceta.", img: "Fotos051025/Planta de la Moneda.jpg" }
-      
-      
-      
-      
-      
     ];
 
     const exteriores = [
@@ -118,22 +161,16 @@
       { nombre: "Geranio", uso: "Es perfecto para añadir color a balcones, terrazas y ventanas", img: "Fotos051025/Geranio.jpg" },
       { nombre: "Suculenta de Hojas Apiladas", uso: "Macetas en jardines de rocas; interior muy luminoso cerca de ventanas.", img: "Fotos051025/Suculenta de Hojas Apiladas.jpg" },
       { nombre: "Orquídea de Hoja Gruesa", uso: "Planta de interior con luz brillante indirecta; climas cálidos sin heladas.", img: "Fotos051025/Orquídea de Hoja Gruesa.jpg" },
-      { nombre: "Geranio Común", uso: "Balcones, Terrazas, Jardines soleados, y como planta de interior muy luminosa. Es ideal para añadir un color vibrante y duradero.", img: "Fotos051025/Geranio Común.jpg" },
-      { nombre: "Geranio Común Blanco", uso: "El color blanco aporta un toque de elegancia y frescura, combinando bien con cualquier decoración.", img: "Fotos051025/Geranio Común Blanco.jpg" },
+      { nombre: "Geranio Común", uso: "Balcones, Terrazas, Jardines soleados, y como planta de interior muy luminosa.", img: "Fotos051025/Geranio Común.jpg" },
+      { nombre: "Geranio Común Blanco", uso: "El color blanco aporta un toque de elegancia y frescura.", img: "Fotos051025/Geranio Común Blanco.jpg" },
       { nombre: "Flor de Estrella de Mar", uso: "Es apreciada por sus flores grandes y distintivas.", img: "Fotos051025/Flor de Estrella de Mar.jpg" },
       { nombre: "Cica", uso: "En interiores, es ideal para entradas o espacios amplios con mucha luz.", img: "Fotos051025/Cica.jpg" },
       { nombre: "Kalanchoe de Flor", uso: "Ideal para aportar color duradero en invierno y primavera.", img: "Fotos051025/Kalanchoe de Flor.jpg" },
       { nombre: "Aloe Compacto", uso: "Funciona muy bien en jardines de rocas y como parte de terrarios abiertos.", img: "Fotos051025/Aloe Compacto.jpg" },
       { nombre: "Palmera Areca", uso: "Ideal para esquinas y espacios amplios que necesiten un toque tropical.", img: "Fotos051025/Palmera Areca.jpg" },
-      { nombre: "Cactus Barril", uso: "Jardines desérticos o rocosos, Exteriores soleados y como planta ornamental de interior en ventanas muy luminosas o invernaderos.", img: "Fotos051025/Cactus Barril.jpg" },
+      { nombre: "Cactus Barril", uso: "Jardines desérticos o rocosos, exteriores soleados y como planta ornamental.", img: "Fotos051025/Cactus Barril.jpg" },
       { nombre: "Helecho de Boston", uso: "Ideal para macetas colgantes o como planta de suelo en jardines sombreados.", img: "Fotos051025/Helecho de Boston.jpg" },
       { nombre: "Yuca", uso: "Ideal para paisajes de estilo desértico o contemporáneo.", img: "Fotos051025/Yuca.jpg" }
-      
-      
- 
- 
-      
-      
     ];
 
     const materiales = [
@@ -160,5 +197,8 @@
     renderProductos(exteriores, "exteriores");
     renderProductos(materiales, "materiales");
   </script>
+</body>
+</html>
+
 
 
