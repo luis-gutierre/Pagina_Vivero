@@ -1,173 +1,225 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Catálogo de Plantas</title>
- <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: #f5f5f5;
-    position: relative;
-    min-height: 100vh;
-    padding-bottom: 80px; /* espacio para el pie */
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  h2 {
-    margin-top: 40px;
-    color: #2e7d32;
-  }
+    <meta charset="UTF-8">
+    <title>Catálogo de Plantas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 80px; /* espacio para el pie */
+            padding-top: 80px; /* 🔹 Espacio para el menú fijo superior */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #2e7d32;
+            padding-top: 70px; /* 🔹 Padding superior para compensar el menú fijo */
+            margin-top: -70px; /* 🔹 Margen negativo para que la sección quede a la vista */
+        }
 
-  /* Catálogo con 2 columnas */
-  .catalogo {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-    margin-top: 20px;
-    width: 100%;
-    justify-items: center;
-  }
+        /* 🔹 Nuevo Estilo para el Menú de Navegación Fijo */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #2e7d32; /* Color verde oscuro */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 0 20px;
+            font-size: 17px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #25d366; /* Verde WhatsApp al pasar el ratón */
+        }
+        /* Fin de Estilos del Menú */
 
-  /* Tarjeta del producto */
-  .producto {
-    background: white;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 90%;
-    max-width: 450px;
-  }
+        /* Catálogo con 2 columnas */
+        .catalogo {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 20px;
+            width: 100%;
+            justify-items: center;
+        }
 
-  /* Imagen más grande */
-  .producto img {
-    width: 100%;
-    height: 280px;
-    object-fit: contain;
-    border-radius: 10px;
-  }
+        /* Tarjeta del producto */
+        .producto {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 450px;
+        }
 
-  .producto h3 {
-    margin: 10px 0 5px;
-    font-size: 20px;
-  }
+        /* Imagen más grande */
+        .producto img {
+            width: 100%;
+            height: 280px;
+            object-fit: contain;
+            border-radius: 10px;
+        }
 
-  .producto p {
-    font-size: 15px;
-    color: #555;
-    flex-grow: 1;
-  }
+        .producto h3 {
+            margin: 10px 0 5px;
+            font-size: 20px;
+        }
 
-  .btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 16px;
-    background: #25d366;
-    color: white;
-    border-radius: 6px;
-    text-decoration: none;
-    font-size: 15px;
-    transition: background 0.3s;
-  }
-  .btn:hover {
-    background: #128c7e;
-  }
+        .producto p {
+            font-size: 15px;
+            color: #555;
+            flex-grow: 1;
+        }
 
-  /* Icono de WhatsApp fijo */
-  .whatsapp-icon {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    background-color: #25d366;
-    border-radius: 50%;
-    width: 55px;
-    height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    z-index: 1000;
-    transition: transform 0.2s;
-  }
-  .whatsapp-icon:hover {
-    transform: scale(1.1);
-  }
-  .whatsapp-icon img {
-    width: 32px;
-    height: 32px;
-  }
+        .btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 16px;
+            background: #25d366;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 15px;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #128c7e;
+        }
 
-  /* Pie de página */
-footer {
-  text-align: center;
-  background: #2e7d32;
-  color: white;
-  padding: 20px;
-  border-top: 4px solid #25d366;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  font-size: 18px;  /* 🔹 tamaño más grande */
-  font-weight: 600; /* 🔹 un poco más grueso */
-  letter-spacing: 0.5px; /* 🔹 espaciado entre letras */
-}
+        /* Icono de WhatsApp fijo */
+        .whatsapp-icon {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            background-color: #25d366;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            z-index: 1001; /* 🔹 Asegurar que esté encima del navbar */
+            transition: transform 0.2s;
+        }
+        .whatsapp-icon:hover {
+            transform: scale(1.1);
+        }
+        .whatsapp-icon img {
+            width: 32px;
+            height: 32px;
+        }
 
-  frase-destacada {
-  text-align: center;
-  font-size: 20px;
-  color: #388e3c;
-  font-weight: 600;
-  margin-top: -15px;
-  margin-bottom: 25px;
-  letter-spacing: 0.5px;
-  background-color:  #0E6655;
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
- }
+        /* Pie de página */
+        footer {
+            text-align: center;
+            background: #2e7d32;
+            color: white;
+            padding: 20px;
+            border-top: 4px solid #25d366;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
 
-   
-</style>
+        .frase-destacada {
+            text-align: center;
+            font-size: 20px;
+            color: white; /* 🔹 Color de texto ajustado para el fondo */
+            font-weight: 600;
+            margin-top: -15px;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+            background-color: #0E6655;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Media query para dispositivos más pequeños (ej. móviles) */
+        @media (max-width: 768px) {
+            .catalogo {
+                grid-template-columns: 1fr; /* Una sola columna en móvil */
+            }
+            .navbar {
+                padding: 10px 0;
+            }
+            .navbar a {
+                padding: 0 10px;
+                font-size: 15px;
+            }
+            body {
+                padding-top: 60px; /* Ajustar padding superior para el navbar más pequeño */
+            }
+            h2 {
+                padding-top: 50px;
+                margin-top: -50px;
+            }
+        }
+    </style>
 
 </head>
 <body>
 
-  <!-- Icono WhatsApp -->
-  <a href="https://wa.me/51992555359" class="whatsapp-icon" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-  </a>
+    <div class="navbar">
+        <a href="#interiores-seccion">Plantas Interiores</a>
+        <a href="#exteriores-seccion">Plantas Exteriores</a>
+        <a href="#materiales-seccion">Materiales y Accesorios</a>
+    </div>
 
-  <h1>🌿 Catálogo de Plantas - Vivero Raíces y Flores</h1>
-  <p class="frase-destacada">🌱 Las mejores plantas de la Agraria — ¡Llévate naturaleza a casa hoy mismo! 🌸<br>
-  <b>📍 Ubicación: Lima - Pachacamac - Manchay - Chacra 
-  </p>
-  
+    <a href="https://wa.me/51992555359" class="whatsapp-icon" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
 
-  <h2>Plantas Interiores</h2>
-  <div class="catalogo" id="interiores"></div>
+    <h1>🌿 Catálogo de Plantas - Vivero Raíces y Flores</h1>
+    <p class="frase-destacada">🌱 Las mejores plantas de la Agraria — ¡Llévate naturaleza a casa hoy mismo! 🌸<br>
+        <b>📍 Ubicación: Lima - Pachacamac - Manchay - Chacra
+    </p>
 
-  <h2>Plantas Exteriores</h2>
-  <div class="catalogo" id="exteriores"></div>
 
-  <h2>Materiales y Accesorios</h2>
-  <div class="catalogo" id="materiales"></div>
+    <h2 id="interiores-seccion">Plantas Interiores</h2>
+    <div class="catalogo" id="interiores"></div>
 
-  <footer>
-    📍 Ubicación: Lima - Pachacamac - Manchay - Chacra
-  </footer>
+    <h2 id="exteriores-seccion">Plantas Exteriores</h2>
+    <div class="catalogo" id="exteriores"></div>
 
-  <script>
-    const interiores = [
+    <h2 id="materiales-seccion">Materiales y Accesorios</h2>
+    <div class="catalogo" id="materiales"></div>
+
+    <footer>
+        📍 Ubicación: Lima - Pachacamac - Manchay - Chacra
+    </footer>
+
+    <script>
+        const interiores = [
       { nombre: "anturio amarillo", uso: "Ideal para interiores elegantes, aporta color y alegría.", img: "anturio amarillo.jpg" },
       { nombre: "anturio blanco", uso: "Perfecto para espacios minimalistas y modernos, transmite paz.", img: "anturio blanco.jpg" },
       { nombre: "orquideas", uso: "Ideal para un regalo memorable o como acento de lujo en salas y oficinas.", img: "Fotos261025/foto2.jpg" },
@@ -188,10 +240,10 @@ footer {
       { nombre: "Croton", uso: "Se usa como planta ornamental por su follaje llamativo.", img: "Fotos051025/Croton.jpg" },
       { nombre: "Cola de Burro", uso: "Es una excelente planta ornamental de interior en espacios con buena luz.", img: "Fotos051025/Cola de Burro.jpg" },
       { nombre: "Planta de la Moneda", uso: "Ideal para bonsái (por su fácil poda) o como suculenta de maceta.", img: "Fotos051025/Planta de la Moneda.jpg" }
-      
-    ];
 
-    const exteriores = [
+        ];
+
+        const exteriores = [
       { nombre: "cyca", uso: "Ideal para jardines o macetas grandes, aporta un aire elegante y robusto.", img: "cyca.jpg" },
       { nombre: "duranta", uso: "Excelente para cercos vivos y jardines soleados, de fácil mantenimiento.", img: "duranta.jpg" },
       { nombre: "echavaria", uso: "Perfecta para espacios pequeños y decoraciones minimalistas.", img: "echavaria.jpg" },
@@ -218,42 +270,31 @@ footer {
       { nombre: "cicas", uso: "La Falsa Palma perfecta para patios, entradas y como punto focal. Aporta una majestuosidad exótica", img: "Fotos261025/foto8.jpg" },
       { nombre: "Pandano", uso: "perfecto para crear un punto de diseño tropical en salones amplios o terrazas luminosas.", img: "Fotos261025/foto9.jpg" },
       { nombre: "Bromelia", uso: "Aporta un toque exótico y vibrante a cualquier rincón interior. Una flor natural que dura meses y requiere poco riego.", img: "Fotos261025/foto10.jpg" }
-      
-      
-      
-      
-      
-      
-     
-      
-    ];
+        ];
 
-    const materiales = [
-      { nombre: "Troncos", uso: "Clásica y resistente", img: "Fotos26102025/foto6.jpg" },
-      { nombre: "tierra con nutrientes", uso: "Ideal para cualquier tipo de planta", img: "Fotos26102025/foto8.jpg" }
-    ];
+        const materiales = [
+            { nombre: "Troncos", uso: "Clásica y resistente", img: "Fotos26102025/foto6.jpg" },
+            { nombre: "tierra con nutrientes", uso: "Ideal para cualquier tipo de planta", img: "Fotos26102025/foto8.jpg" }
+        ];
 
-    function renderProductos(lista, contenedorId) {
-      const contenedor = document.getElementById(contenedorId);
-      lista.forEach(prod => {
-        const div = document.createElement("div");
-        div.className = "producto";
-        div.innerHTML = `
-          <img src="${prod.img}" alt="${prod.nombre}">
-          <h3>${prod.nombre}</h3>
-          <p>${prod.uso}</p>
-          <a class="btn" href="https://wa.me/51992555359?text=Hola!%20Quiero%20comprar%20${encodeURIComponent(prod.nombre)}">Comprar</a>
-        `;
-        contenedor.appendChild(div);
-      });
-    }
+        function renderProductos(lista, contenedorId) {
+            const contenedor = document.getElementById(contenedorId);
+            lista.forEach(prod => {
+                const div = document.createElement("div");
+                div.className = "producto";
+                div.innerHTML = `
+                    <img src="${prod.img}" alt="${prod.nombre}">
+                    <h3>${prod.nombre}</h3>
+                    <p>${prod.uso}</p>
+                    <a class="btn" href="https://wa.me/51992555359?text=Hola!%20Quiero%20comprar%20${encodeURIComponent(prod.nombre)}">Comprar</a>
+                `;
+                contenedor.appendChild(div);
+            });
+        }
 
-    renderProductos(interiores, "interiores");
-    renderProductos(exteriores, "exteriores");
-    renderProductos(materiales, "materiales");
-  </script>
+        renderProductos(interiores, "interiores");
+        renderProductos(exteriores, "exteriores");
+        renderProductos(materiales, "materiales");
+    </script>
 </body>
 </html>
-
-
-
